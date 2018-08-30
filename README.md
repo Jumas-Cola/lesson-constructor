@@ -5,7 +5,7 @@
 Из предложенных разделов можно выбрать методики и добавить в план урока (лист урока сортируемый - элементы можно менять местами перетаскиванием).
 По нажатию кнопки "Скачать", план будет экспортирован в .doc и скачан.  
 
-Демо:[https://lesson-constructor.000webhostapp.com/](https://lesson-constructor.000webhostapp.com/)
+Демо: [https://lesson-constructor.000webhostapp.com/](https://lesson-constructor.000webhostapp.com/)
 
 Добавление методик
 ------------
