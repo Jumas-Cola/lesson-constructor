@@ -18,6 +18,6 @@
 
 Использованные материалы
 ------------
-[https://sites.google.com/site/konstruktoruroka/wi-fi](https://sites.google.com/site/konstruktoruroka/wi-fi) 
-[https://xn--j1ahfl.xn--p1ai/library/konstruktor_urokov_052955.html](https://xn--j1ahfl.xn--p1ai/library/konstruktor_urokov_052955.html) 
-[https://github.com/lukasoppermann/html5sortable](https://github.com/lukasoppermann/html5sortable) 
+[https://sites.google.com/site/konstruktoruroka/wi-fi](https://sites.google.com/site/konstruktoruroka/wi-fi)  
+[https://xn--j1ahfl.xn--p1ai/library/konstruktor_urokov_052955.html](https://xn--j1ahfl.xn--p1ai/library/konstruktor_urokov_052955.html)  
+[https://github.com/lukasoppermann/html5sortable](https://github.com/lukasoppermann/html5sortable)
