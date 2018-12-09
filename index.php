@@ -83,7 +83,7 @@
         <div class="col-md-6" id="lesson_list">
         <h2>План урока</h2>
           <ul class="js-sortable sortable list flex flex-column list-reset list-unstyled">
-            
+
           </ul>
           <section class="d-flex justify-content-end">
           	<button id="save_btn" class="btn btn-secondary" onclick="saveDoc();" hidden>Скачать</button>
@@ -95,7 +95,7 @@
     <section class="container">
     	<hr class="featurette-divider m-5">
     </section>
-    
+
 
     <footer class="container pb-5">
       <p class="float-right"><a href="#">Back to top</a></p>
@@ -115,10 +115,10 @@
     		newli.innerHTML = html;
     		var add_rem = newli.querySelector('#add_rem');
     		add_rem.text = "Удалить из списка";
-    		add_rem.setAttribute("onclick", "this.parentNode.parentNode.remove();");
+    		add_rem.setAttribute("onclick", "this.parentNode.parentNode.remove();checkDownlBtn();");
     		uls[0].appendChild(newli);
     		document.querySelector('#save_btn').removeAttribute("hidden");
-    	}	
+    	}
     </script>
 
     <script type="text/javascript">
@@ -155,12 +155,19 @@
 
     <script>
     	function saveDoc(){
-			var a = document.createElement("a");
-			var text = $(document.querySelectorAll('#lesson_list > ul > li > .card-body > .full_text')).text();
-			a.setAttribute("href", "data:text/plain;charset=utf-8," + text);
-			a.setAttribute("download", "lesson_list.doc");
-			a.click();
-		}
+  			var a = document.createElement("a");
+  			var text = $(document.querySelectorAll('#lesson_list > ul > li > .card-body > .full_text')).text();
+  			a.setAttribute("href", "data:text/plain;charset=utf-8," + text);
+  			a.setAttribute("download", "lesson_list.doc");
+  			a.click();
+  		}
+
+      function checkDownlBtn(){
+        var cards = $(document.querySelectorAll('#lesson_list > ul > li > .card-body'));
+        if (!cards.length){
+          document.getElementById('save_btn').setAttribute("hidden", true);
+        }
+      }
 	</script>
   </body>
 </html>
