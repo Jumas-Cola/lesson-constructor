@@ -12,6 +12,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <!--Additional CSS-->
+    <link rel="stylesheet" href="styles.css">
+
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
     <script src="html5sortable.js"></script>
 
@@ -34,8 +37,8 @@
       <section class="border-bottom row pb-2 col-md-12">
 			<?php
         $result = $pdo->query('SELECT id,stage FROM stages');
-        while($row = $result->fetch(PDO::FETCH_ASSOC)){
-          echo '<button class="btn btn-secondary m-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample'.$row['id'].'" aria-expanded="true" aria-controls="multiCollapseExample'.$row['id'].'" onclick="closeItems()">'.$row['stage'].'</button>';
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            echo '<button class="btn btn-secondary m-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample'.$row['id'].'" aria-expanded="true" aria-controls="multiCollapseExample'.$row['id'].'" onclick="closeItems()">'.$row['stage'].'</button>';
         }
       ?>
       </section>
@@ -45,17 +48,19 @@
       <?php
         $result = $pdo->query('SELECT * FROM stages');
         $counter=0;
-        while($row = $result->fetch(PDO::FETCH_ASSOC)){
-			    echo '<section class="multi-collapse collapse';
-          if ($counter==0){echo " show";};
-          echo '" id="multiCollapseExample'.$row['id'].'">
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            echo '<section class="multi-collapse collapse';
+            if ($counter==0) {
+                echo " show";
+            };
+            echo '" id="multiCollapseExample'.$row['id'].'">
 			    	<section class="m-1 mb-3 p-1 font-weight-bold">
 			    		'.$row['stage_description'].'
 			    	</section>
 			      	<ul class="list-unstyled">';
-			$items = $pdo->query('SELECT * FROM '.$row['stage_table_name']);
-			while($item = $items->fetch(PDO::FETCH_ASSOC)){
-			   	echo	'<li class="card mb-1">
+            $items = $pdo->query('SELECT * FROM '.$row['stage_table_name']);
+            while ($item = $items->fetch(PDO::FETCH_ASSOC)) {
+                echo	'<li class="card mb-1">
 			            	<div class="card-body p-2"  stage_table_name="'.$row['stage_table_name'].'" id="'.$item['id'].'">
 							    <h5 class="card-title">'.$item['name'].'</h5>
 							    <p class="card-text">'.mb_substr($item['description'], 0, 200).'...</p>
@@ -68,10 +73,10 @@
 							    <a href="#" id="add_rem" class="card-link" onclick="appendToList(this.parentNode.parentNode.innerHTML);">Добавить в список</a>
 							</div>
 			            </li>';
-			};
-			echo	'</ul>
+            };
+            echo	'</ul>
 			    </section>';
-          $counter++;
+            $counter++;
         }
       ?>
 			</section>
@@ -143,8 +148,8 @@
         function closeItems() {
           var items = document.querySelectorAll("[id*='multiCollapseExample']");
           for (i = 0; i < items.length; ++i) {
-              items[i].classList.remove('show');;
-            }
+            items[i].classList.remove('show');
+          }
         }
     </script>
 
