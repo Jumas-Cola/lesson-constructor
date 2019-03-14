@@ -70,7 +70,7 @@
 
 </section>
 							    <a href="card.php?stage='.$row['stage_table_name'].'&id='.$item['id'].'" class="card-link" target="_blank">Подробнее</a>
-							    <a href="#" id="add_rem" class="card-link" onclick="appendToList(this.parentNode.parentNode.innerHTML);">Добавить в список</a>
+							    <a id="add_rem" class="card-link" onclick="appendToList(this.parentNode.parentNode.innerHTML);">Добавить в список</a>
 							</div>
 			            </li>';
             };
