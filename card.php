@@ -25,7 +25,7 @@
 
     <section class="container m-3 ml-auto mr-auto">
 
-			<?php
+      <?php
         $result = $pdo->query('SELECT stage_table_name FROM stages');
         $stages = array();
         while($row = $result->fetch(PDO::FETCH_ASSOC)){
@@ -47,14 +47,14 @@
           }
       }
       ?>
-			
+
     </section>
 
 
     <section class="container">
-    	<hr class="featurette-divider m-5">
+      <hr class="featurette-divider m-5">
     </section>
-    
+
 
     <footer class="container pb-5">
         <p class="float-right"><a href="#">Back to top</a></p>

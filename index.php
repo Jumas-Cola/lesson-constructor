@@ -24,18 +24,18 @@
   <body>
 
 <header class="container p-3">
-	<h1>Конструктор уроков</h1>
-	<p>Предлагаемые приемы педагогической техники могут быть успешно использованы в любой предметной области, так как являются универсальными. Легко встраиваются в уроки любого типа и могут быть использованы на разных этапах урока. Используемые в работе элементы «Конструктора урока»  (автор Анатолий Гин) могут быть дополнены личными находками учителя.</p>
+  <h1>Конструктор уроков</h1>
+  <p>Предлагаемые приемы педагогической техники могут быть успешно использованы в любой предметной области, так как являются универсальными. Легко встраиваются в уроки любого типа и могут быть использованы на разных этапах урока. Используемые в работе элементы «Конструктора урока»  (автор Анатолий Гин) могут быть дополнены личными находками учителя.</p>
 </header>
 
 
     <section class="container row m-3 ml-auto mr-auto">
 
-    	<section class="container card_collapse col-12 col-md-6">
+      <section class="container card_collapse col-12 col-md-6">
 
-    	<!--Разделы урока-->
+      <!--Разделы урока-->
       <section class="border-bottom row pb-2 col-md-12">
-			<?php
+      <?php
         $result = $pdo->query('SELECT id,stage FROM stages');
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             echo '<button class="btn btn-secondary m-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample'.$row['id'].'" aria-expanded="true" aria-controls="multiCollapseExample'.$row['id'].'" onclick="closeItems()">'.$row['stage'].'</button>';
@@ -43,8 +43,8 @@
       ?>
       </section>
 
-			<!--Наполнение разделов-->
-			<section class="mb-2">
+      <!--Наполнение разделов-->
+      <section class="mb-2">
       <?php
         $result = $pdo->query('SELECT * FROM stages');
         $counter=0;
@@ -54,34 +54,34 @@
                 echo " show";
             };
             echo '" id="multiCollapseExample'.$row['id'].'">
-			    	<section class="m-1 mb-3 p-1 font-weight-bold">
-			    		'.$row['stage_description'].'
-			    	</section>
-			      	<ul class="list-unstyled">';
+            <section class="m-1 mb-3 p-1 font-weight-bold">
+              '.$row['stage_description'].'
+            </section>
+              <ul class="list-unstyled">';
             $items = $pdo->query('SELECT * FROM '.$row['stage_table_name']);
             while ($item = $items->fetch(PDO::FETCH_ASSOC)) {
-                echo	'<li class="card mb-1">
-			            	<div class="card-body p-2"  stage_table_name="'.$row['stage_table_name'].'" id="'.$item['id'].'">
-							    <h5 class="card-title">'.$item['name'].'</h5>
-							    <p class="card-text">'.mb_substr($item['description'], 0, 200).'...</p>
+                echo  '<li class="card mb-1">
+                    <div class="card-body p-2"  stage_table_name="'.$row['stage_table_name'].'" id="'.$item['id'].'">
+                  <h5 class="card-title">'.$item['name'].'</h5>
+                  <p class="card-text">'.mb_substr($item['description'], 0, 200).'...</p>
                   <section class="full_text" hidden="true">'.$item['name'].'<br>
 '.$item['description'].'
 
 
 </section>
-							    <a href="card.php?stage='.$row['stage_table_name'].'&id='.$item['id'].'" class="card-link" target="_blank">Подробнее</a>
-							    <a id="add_rem" class="card-link" onclick="appendToList(this.parentNode.parentNode.innerHTML);">Добавить в список</a>
-							</div>
-			            </li>';
+                  <a href="card.php?stage='.$row['stage_table_name'].'&id='.$item['id'].'" class="card-link" target="_blank">Подробнее</a>
+                  <a id="add_rem" class="card-link" onclick="appendToList(this.parentNode.parentNode.innerHTML);">Добавить в список</a>
+              </div>
+                  </li>';
             };
-            echo	'</ul>
-			    </section>';
+            echo  '</ul>
+          </section>';
             $counter++;
         }
       ?>
-			</section>
+      </section>
 
-		</section>
+    </section>
 
 
 
@@ -91,14 +91,14 @@
 
           </ul>
           <section class="d-flex justify-content-end">
-          	<button id="save_btn" class="btn btn-secondary" onclick="saveDoc();" hidden>Скачать</button>
+            <button id="save_btn" class="btn btn-secondary" onclick="saveDoc();" hidden>Скачать</button>
           </section>
         </div>
 
     </section>
 
     <section class="container">
-    	<hr class="featurette-divider m-5">
+      <hr class="featurette-divider m-5">
     </section>
 
 
@@ -110,20 +110,20 @@
 
     <!-- Optional JavaScript -->
     <script type="text/javascript">
-    	function appendToList(html){
-    		var uls = document.getElementById('lesson_list').querySelectorAll('ul');
-    		var newli = document.createElement("li");
-    		newli.setAttribute("class", "card mb-1 bg-light");
-    		newli.setAttribute("draggable", "true");
-    		newli.setAttribute("role", "option");
-    		newli.setAttribute("aria-grabbed", "false");
-    		newli.innerHTML = html;
-    		var add_rem = newli.querySelector('#add_rem');
-    		add_rem.text = "Удалить из списка";
-    		add_rem.setAttribute("onclick", "this.parentNode.parentNode.remove();checkDownlBtn();");
-    		uls[0].appendChild(newli);
-    		document.querySelector('#save_btn').removeAttribute("hidden");
-    	}
+      function appendToList(html){
+        var uls = document.getElementById('lesson_list').querySelectorAll('ul');
+        var newli = document.createElement("li");
+        newli.setAttribute("class", "card mb-1 bg-light");
+        newli.setAttribute("draggable", "true");
+        newli.setAttribute("role", "option");
+        newli.setAttribute("aria-grabbed", "false");
+        newli.innerHTML = html;
+        var add_rem = newli.querySelector('#add_rem');
+        add_rem.text = "Удалить из списка";
+        add_rem.setAttribute("onclick", "this.parentNode.parentNode.remove();checkDownlBtn();");
+        uls[0].appendChild(newli);
+        document.querySelector('#save_btn').removeAttribute("hidden");
+      }
     </script>
 
     <script type="text/javascript">
@@ -159,13 +159,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <script>
-    	function saveDoc(){
-  			var a = document.createElement("a");
-  			var text = $(document.querySelectorAll('#lesson_list > ul > li > .card-body > .full_text')).text();
-  			a.setAttribute("href", "data:text/plain;charset=utf-8," + text);
-  			a.setAttribute("download", "lesson_list.doc");
-  			a.click();
-  		}
+      function saveDoc(){
+        var a = document.createElement("a");
+        var text = $(document.querySelectorAll('#lesson_list > ul > li > .card-body > .full_text')).text();
+        a.setAttribute("href", "data:text/plain;charset=utf-8," + text);
+        a.setAttribute("download", "lesson_list.doc");
+        a.click();
+      }
 
       function checkDownlBtn(){
         var cards = $(document.querySelectorAll('#lesson_list > ul > li > .card-body'));
@@ -173,6 +173,6 @@
           document.getElementById('save_btn').setAttribute("hidden", true);
         }
       }
-	</script>
+  </script>
   </body>
 </html>
